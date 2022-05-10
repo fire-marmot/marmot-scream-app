@@ -1,22 +1,17 @@
 import React from 'react';
 
-import PersonalCard from '../sections/aboutPage/personalCard';
-import { 
-  IanStory,
-  BiaocaStory,
-  ClarissaStory,
-  ChrisStory } from '../sections/aboutPage/personalTexts';
+import TeamFireMarmot from '../sections/aboutPage/TeamFireMarmot';
 
 
 const AboutPage = () => {
 
   return (
     <>
-      <h1>About Page</h1>
-      <PersonalCard 
-        text={IanStory}
-        cardHeader={'Custom Header'}
-        />
+      <h1 className='text-primary text-2xl'>About Page</h1>
+      <div className='flex'>
+        <TeamFireMarmot/>
+      </div>
+ 
     </>
   )
 }

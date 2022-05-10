@@ -1,10 +1,28 @@
 import React from 'react';
+import Image from 'next/image';
 
+const PersonalCardImage = ({ src }) => (
+  <div>
+    <Image 
+      src={src}
+      alt='Developer Face'
+      height={200}
+      width={200}
+      />
+  </div>
+)
 
-const PersonalCard = ({ cardHeader, text }) => (
-  <div className="bg-green-100 border-width-2 rounded w-96 h-48 p-5 m-3">
-    <h1>{cardHeader}</h1>
-    <p>{text}</p>
+const PersonalCardHeader = ({ cardHeader }) => (
+  <div className='text-center'>
+    {cardHeader}
+  </div>
+)
+
+const PersonalCard = ({ cardHeader, text, imgSrc }) => (
+  <div className="bg-dark border-width-2 text-light rounded w-96 p-5 m-3">
+    <PersonalCardHeader cardHeader={cardHeader} />
+    <PersonalCardImage src={imgSrc}/>
+    <div>{text}</div>
   </div>
 );
 
