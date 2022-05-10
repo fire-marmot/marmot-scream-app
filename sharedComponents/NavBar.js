@@ -12,10 +12,10 @@ const routeMap = {
 const routing = Object.entries(routeMap);
 
 const NavBar = () => (
-  <div className='flex'>
+  <div className='flex bg-darkest'>
     {routing.map((i, idx) => (
       <Link key={idx + i[0]} href={i[1]}>
-        <a className='p-3 text-fuchsia-600'>{i[0]}</a>
+        <a className='p-3 text-light bg-primary hover:bg-light hover:text-dark rounded m-2'>{i[0]}</a>
       </Link>
     ))}
   </div>
