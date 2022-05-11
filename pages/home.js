@@ -1,6 +1,7 @@
 import MainGreeting from '../sections/homePage/mainGreeting';
 import MovieCard from '../sharedComponents/movieCard';
 
+import SearchForm from '../sections/homePage/SearchForm';
 
 const MovieList1 = ({number}) => {
   const movies = [];
@@ -42,6 +43,7 @@ export default function Home() {
             <MovieList2 number={12} className='cols-1'/>
           </div>
         </div>
+        <SearchForm/>
       </main>
   )
 }

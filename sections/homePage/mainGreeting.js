@@ -6,5 +6,4 @@ const MainGreeting = () => (
   </>
 )
 
-
 export default MainGreeting;
