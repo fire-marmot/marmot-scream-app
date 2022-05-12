@@ -2,12 +2,12 @@
    Ian : {
      title: 'Ian VanLung',
      image: '/personalPics/FaceFace.png',
-     description: 'This is Ian\'s personal blah blah blah'
+     description: 'I found a wooden shoe in my toilet today. It was clogged.'
     },
     Clarissa : {
       title: 'Clarissa',
       image: '/personalPics/FaceFace.png',
-      description: 'I like barfing kittens'
+      description: 'What does a baby computer call his father? Data.'
     },
     Bionca : {
       title: 'Pookie Poops',
@@ -17,6 +17,11 @@
     Chris : {
       title: 'Chris ',
       image: '/personalPics/FaceFace.png',
-      description: 'I live in the middle of nowhere...there\s corn here'
-    } ,
+      description: 'I live in the middle of nowhere...there\'s corn here'
+    },
+    Josh : {
+      title: 'Josh',
+      image: '/personalPics/FaceFace.png',
+      description: 'I hate my job—all I do is crush cans all day. It\’s soda pressing.'
+    }
   }

@@ -7,14 +7,21 @@ module.exports = {
     "./sharedComponents/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
-    colors: {
-      light:'#fffedd', 
-      primary:'#76262b', 
-      secondary:'#e9af61', 
-      dark:'#523642', 
-      darkest:'#37252d'
-    }
+    extend: {
+      colors: {
+        light:'#fffedd', 
+        primary:'#76262b', 
+        secondary:'#e9af61', 
+        dark:'#523642', 
+        darkest:'#37252d'
+      },
+      height: {
+        cardCarousel: '350px'
+      },
+      width: {
+        movieCard: '250px'
+      }
+    },
   },
   plugins: [],
 }
