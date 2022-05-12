@@ -4,9 +4,10 @@ import MovieCard from './MovieCard';
 
 const MovieCarousel = ({ genre, movies }) => {
   return (
-    <div className='grid grid-cols-10 h-cardCarousel'>
-      <div className='col-span-1'>{genre}</div>
-      <div className='col-span-10 flex flex-nowrap overflow-x-auto scroll-smooth'>
+    <div className='grid grid-cols-4 h-cardCarousel'>
+      <div className='font-sans text-primary text-left col-span-1 text-3xl font-extrabold '>{genre}</div>
+      {/* <div className='col-span-10 flex flex-nowrap overflow-x-scroll scroll-smooth container mx-auto flex items-center'> */}
+      <div className='col-span-10 flex flex-nowrap overflow-x-scroll scroll-smooth container mx-auto'>
         {movies.map((movie, idx) => (
           <MovieCard
           key={`${idx} - ${movie.title}`}
@@ -21,7 +22,6 @@ const MovieCarousel = ({ genre, movies }) => {
     </div>
   )
 }
-
 export default MovieCarousel;
 
 
