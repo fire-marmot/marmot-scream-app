@@ -23,7 +23,9 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ],
 }
 
 // black     green     blue     red      yellow  gray
