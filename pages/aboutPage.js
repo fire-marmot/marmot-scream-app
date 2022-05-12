@@ -11,7 +11,6 @@ const AboutPage = () => {
       <div className='flex'>
         <TeamFireMarmot/>
       </div>
- 
     </>
   )
 }
