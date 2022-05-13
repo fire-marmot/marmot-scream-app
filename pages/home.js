@@ -1,7 +1,7 @@
 import MainGreeting from '../sections/homePage/mainGreeting';
 import MovieCarousel from '../sections/homePage/movieCarousel';
 import { GENRES } from '../sharedComponents/enums';
-
+import { useSession } from 'next-auth/react';
 
 const MovieCollection = [
   {
@@ -91,8 +91,19 @@ const MovieCollection = [
 ]
 
 
-export default function Home() {
+
+export default function Home(props) {
+  const { data, status} = useSession();
+  console.log(data)
+//  console.log(status)
+  const isLoggedIn = !!(data?.user?.name);
+  
+  if (!isLoggedIn) {
+    return <h1>Go away!</h1>
+  }
+
   return (
+
       <main className="text-center m-5 pt-5" id='main-content'>
         <MainGreeting/>
         <MovieCarousel genre={GENRES.adult} movies={MovieCollection}/>

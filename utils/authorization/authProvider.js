@@ -5,9 +5,6 @@ import { SessionProvider } from 'next-auth/react';
 
 const AuthContextProvider = () => {
   const [ session, setSession ] = useState({});
-  
-
-
 }
 
 
