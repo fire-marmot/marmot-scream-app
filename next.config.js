@@ -5,10 +5,13 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/homePage',
+        destination: '/home',
         permanent: true,
       },
     ]
+  },
+  images: {
+    domains: ['www.badmovies.org']
   }
 }
 
