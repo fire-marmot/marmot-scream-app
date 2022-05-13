@@ -46,4 +46,3 @@ const MovieCard = ({ title, description, service, url, imageUrl, onMouseDown, on
 )
 
 export default MovieCard;
-

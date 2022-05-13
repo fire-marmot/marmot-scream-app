@@ -1,5 +1,7 @@
 import NextAuth from "next-auth/next";
 import Auth0Provider from 'next-auth/providers/auth0';
+import GithubProvider from "next-auth/providers/github"
+ 
 
 export default NextAuth({
   providers: [
@@ -9,8 +11,9 @@ export default NextAuth({
       issuer: process.env.AUTH0_ISSUER
     })
   ],
+
   pages: {
-    signIn: '/auth/signIn'
+    signIn: '/auth/signin'
   }
 
 })
