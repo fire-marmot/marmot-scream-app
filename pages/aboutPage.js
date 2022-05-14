@@ -7,7 +7,7 @@ const AboutPage = () => {
 
   return (
     <>
-      <h1 className='text-primary text-2xl'>About Page</h1>
+      <h1 className='text-2xl text-primary'>About Page</h1>
       <div className='flex'>
         <TeamFireMarmot/>
       </div>

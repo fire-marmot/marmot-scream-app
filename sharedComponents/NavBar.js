@@ -16,7 +16,7 @@ const NavBar = () => (
   <div className='flex bg-darkest'>
     {routing.map((i, idx) => (
       <Link key={idx + i[0]} href={i[1]}>
-        <a className='p-3 text-light bg-primary hover:bg-light hover:text-dark rounded m-2'>{i[0]}</a>
+        <a className='p-3 m-2 rounded text-light bg-primary hover:bg-light hover:text-dark'>{i[0]}</a>
       </Link>
     ))}
   </div>

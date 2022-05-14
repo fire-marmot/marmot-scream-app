@@ -19,9 +19,9 @@ const MovieCarousel = ({ genre, movies, handleLike }) => {
   
   return (
     <div className='grid grid-cols-4 h-cardCarousel'>
-      <div className='font-sans text-primary text-left col-span-1 text-3xl font-extrabold '>{genre}</div>
-      {/* <div className='col-span-10 flex flex-nowrap overflow-x-scroll scroll-smooth container mx-auto flex items-center'> */}
-      <div className='col-span-10 flex flex-nowrap overflow-x-scroll container mx-auto scrollbar-hide scrolling-touch items-start bg-primary rounded-md p-2'>
+      <div className='col-span-1 font-sans text-3xl font-extrabold text-left text-primary '>{genre}</div>
+      {/* <div className='container flex items-center col-span-10 mx-auto overflow-x-scroll flex-nowrap scroll-smooth'> */}
+      <div className='container flex items-start col-span-10 p-2 mx-auto overflow-x-scroll scrolling-touch rounded-md flex-nowrap scrollbar-hide bg-primary'>
         {movies.map((movie, idx) => (
           <MovieCard
             key={`${idx} - ${movie.title}`}
