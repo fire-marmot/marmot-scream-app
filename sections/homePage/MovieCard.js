@@ -31,18 +31,21 @@ const MovieCardDescription = ({ description }) => (
   </div>
 )
 
-const MovieCard = ({ title, description, service, url, imageUrl, onMouseDown, onMouseUp }) => (
+const MovieCard = ({ movieID, title, description, service, url, imageUrl, onMouseDown, onMouseUp, isLiked, handleLike }) => {
   // w-movieCard removed
-  <div className='bg-black rounded-md w-movieCard text-sm max-h-[700px] min-w-[300px] m-2 p-2 hover:scale-105' 
-    onMouseDown={onMouseDown}
-    onMouseUp={onMouseUp}
+  return (
+    <div 
+      className='bg-black rounded-md w-movieCard text-sm max-h-[700px] min-w-[300px] m-2 p-2 hover:scale-105' 
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
     >
-    <MovieCardImage imageUrl={imageUrl} url={url} />
-    <MovieCardTitle title={title} />
-    <MovieCardDescription description={description} />
-    <div className='text-secondary'>Streaming On: {service}</div>
-    <HeartIcon/>
-  </div>
-)
+      <MovieCardImage imageUrl={imageUrl} url={url} />
+      <MovieCardTitle title={title} />
+      <MovieCardDescription description={description} />
+      <div className='text-secondary'>Streaming On: {service}</div>
+      <HeartIcon handleLike={handleLike} isLiked={isLiked} movieID={movieID}/>
+    </div>
+  )
+}
 
 export default MovieCard;
