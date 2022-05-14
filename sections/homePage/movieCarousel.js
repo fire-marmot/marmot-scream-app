@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MovieCard from './MovieCard';
 
-const MovieCarousel = ({ genre, movies }) => {
+const MovieCarousel = ({ genre, movies, handleLike }) => {
   const [ mouseX, setMouseX ] = useState();
   const [ mouseY, setMouseY ] = useState();
   
@@ -27,11 +27,13 @@ const MovieCarousel = ({ genre, movies }) => {
             key={`${idx} - ${movie.title}`}
             onMouseDown={mouseDown}
             onMouseUp={mouseUp}
+            movieID={movie.movieID}
             title={movie.title}
             imageUrl={movie.imageUrl}
             description={movie.description}
             service={movie.service}
             url={movie.url}
+            handleLike={handleLike}
             />
             ))}
       </div>
