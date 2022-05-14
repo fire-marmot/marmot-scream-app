@@ -1,7 +1,7 @@
 import NextAuth from "next-auth/next";
 import Auth0Provider from 'next-auth/providers/auth0';
-import GithubProvider from "next-auth/providers/github"
- 
+import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from 'next-auth/providers/google';
 
 export default NextAuth({
   providers: [
@@ -13,7 +13,6 @@ export default NextAuth({
   ],
 
   pages: {
-    signIn: '/auth/signin'
   }
 
 })

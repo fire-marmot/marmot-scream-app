@@ -17,7 +17,7 @@ const handleLogOut = (e) => {
 const SignInButton = ({ isLoggedIn }) => {
   const handler = isLoggedIn ? handleLogOut : handleLogin;
   return (
-    <Link href='../home'>
+    <Link href='/home'>
       <a className='p-3 text-light bg-primary hover:bg-light hover:text-dark rounded m-2'
          onClick={handler}
       >

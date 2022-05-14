@@ -4,7 +4,10 @@ import Head from 'next/head';
 import Header from '../sharedComponents/Header';
 
 
-const MyApp = ({ Component,pageProps, session }) => (
+const MyApp = ({ Component, pageProps, session }) => {
+  console.log(pageProps)
+
+  return (
   <div>
       <Head>
         <title>Marmot Movies</title>
@@ -17,6 +20,7 @@ const MyApp = ({ Component,pageProps, session }) => (
     </SessionProvider>
   </div>
   )
+}
 
 
 export default MyApp
