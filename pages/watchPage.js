@@ -1,13 +1,13 @@
 import React from 'react';
-import NavBar from '../sharedComponents/NavBar.js';
-import Header from './sharedComponents/Header.js'
+import SearchForm from '../sections/homePage/SearchForm.js';
+
 
 const watchPage = () => {
 
   return (
     <>
-    <NavBar/>
-    <Header/>
+      <h1>hello world</h1>
+      <SearchForm/>
     </>
   )
 }

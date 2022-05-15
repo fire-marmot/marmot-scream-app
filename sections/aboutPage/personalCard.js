@@ -19,7 +19,7 @@ const PersonalCardHeader = ({ cardHeader }) => (
 )
 
 const PersonalCard = ({ cardHeader, text, imgSrc }) => (
-  <div className="bg-dark border-width-2 text-light rounded w-96 p-5 m-3">
+  <div className="p-5 m-3 rounded bg-dark border-width-2 text-light w-96">
     <PersonalCardHeader cardHeader={cardHeader} />
     <PersonalCardImage src={imgSrc}/>
     <div>{text}</div>

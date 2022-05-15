@@ -7,6 +7,7 @@ const routeMap = {
   'home': 'home',
   'about': 'aboutPage',
   'search': 'searchPage',
+  'watch': 'watchPage',
 }
 
 

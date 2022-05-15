@@ -2,6 +2,7 @@ import MainGreeting from '../sections/homePage/mainGreeting';
 import MovieCarousel from '../sections/homePage/movieCarousel';
 import { GENRES } from '../sharedComponents/enums';
 import { useSession } from 'next-auth/react';
+import { useMovieResource } from '../sharedComponents/MarmotProvider/useMovieResource'
 
 import { 
   useMovieDB, 
@@ -149,14 +150,14 @@ export default function Home() {
       addLiked(movieID)
     }
   }
-
+  const movieData = useMovieResource()
   if (!isLoggedIn) {
       return <h1>Go away!</h1>
   }
-
+  console.log(movieData)
   return (
 
-      <main className="text-center m-5 pt-5" id='main-content'>
+      <main className="pt-5 m-5 text-center" id='main-content'>
         <div><button onClick={addLiked}>add liked</button></div>
         <div><button onClick={removeLiked}>remove liked</button></div>
         <div><button onClick={addWatched}>add Watched</button></div>
