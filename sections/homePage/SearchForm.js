@@ -7,11 +7,11 @@ genreArr.sort();
 const showTypes = Object.entries(SHOW_TYPES);
 
 const SearchForm = () => {
-  const [ searchState, setSearchState ] = useState({});
-  const [ type, setType ] = useState('');
-  const [ movieTitle, setMovieTitle ] = useState('');
-  const [ genre, setGenre ] = useState('');
-  
+  const [searchState, setSearchState] = useState({});
+  const [type, setType] = useState('');
+  const [movieTitle, setMovieTitle] = useState('');
+  const [genre, setGenre] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchState({
@@ -22,13 +22,13 @@ const SearchForm = () => {
     movieSearch(searchState.movieTitle)
     e.target.reset()
   }
-  
+
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
     setSearchState({
       ...searchState,
-      [name] : value
+      [name]: value
     })
   }
 
@@ -45,13 +45,14 @@ const SearchForm = () => {
         </div>
       <div>
       <button 
-        className='text-light bg-primary hover:bg-light hover:text-dark rounded  ml-4 w-24'
+        className='w-24 ml-4 rounded text-light bg-primary hover:bg-light hover:text-dark'
         type='submit'
         > 
           Search
         </button>
       </div>
     </form>
+    </>
   )
 }
 
