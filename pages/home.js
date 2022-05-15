@@ -2,6 +2,7 @@ import MainGreeting from '../sections/homePage/mainGreeting';
 import MovieCarousel from '../sections/homePage/movieCarousel';
 import { GENRES } from '../sharedComponents/enums';
 import { useSession } from 'next-auth/react';
+import { useMovieResource } from '../sharedComponents/MarmotProvider/useMovieResource'
 
 import { 
   useMovieDB, 
@@ -150,10 +151,13 @@ export default function Home() {
     }
   }
 
+ const moviedata = useMovieResource();
+
+
   if (!isLoggedIn) {
       return <h1>Go away!</h1>
   }
-
+  console.log(moviedata)
   return (
 
       <main className="text-center m-5 pt-5" id='main-content'>
