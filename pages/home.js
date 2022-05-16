@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MainGreeting from '../sections/homePage/mainGreeting';
 import MovieCarousel from '../sections/homePage/movieCarousel';
+import SearchForm from '../sections/homePage/SearchForm';
 import { GENRES, STREAMING_SERVICE } from '../sharedComponents/enums';
 
 import { useMarmotContext } from '../sharedComponents/MarmotProvider/marmotProvider';
@@ -56,7 +57,7 @@ export default function Home(props) {
     console.log('watch:', watchList)
   }
 
-
+//  const movies = movieSearch();
 
   useEffect(() => {
     if (movieData?.movieDB) {
@@ -80,7 +81,8 @@ export default function Home(props) {
 
       <main className="text-center m-5 pt-5" id='main-content'>
         <MainGreeting/>
-      
+        <SearchForm/>
+
       {hasData && (movieArr.map((i, idx) => (
         <MovieCarousel
           key={idx + 555}
@@ -93,6 +95,7 @@ export default function Home(props) {
         />
         ))
       )}
+
       </main>
   )
 }

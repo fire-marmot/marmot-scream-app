@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { GENRES, SHOW_TYPES } from '../../sharedComponents/enums';
+import { movieSearch } from '../../sharedComponents/MarmotProvider/movieSearch';
 
 const genreArr = Object.entries(GENRES);
 genreArr.sort();
@@ -19,6 +20,7 @@ const SearchForm = () => {
       genre: genre
     })
     console.log(searchState)
+    movieSearch(movieTitle)
     e.target.parentElement.reset()
   }
   
