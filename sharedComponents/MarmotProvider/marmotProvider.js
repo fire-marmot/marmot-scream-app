@@ -1,70 +1,54 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useMovieResource } from './useMovieResource';
+import React, { useState, useEffect, useContext, createContext} from 'react';
+import axios from 'axios';
 
-const MovieContext = React.createContext();
-const UpdateMovieContext = React.createContext();
+const AuthContext = createContext();
 
-const WatchedContext = React.createContext();
-const UpdateWatchedContext = React.createContext();
+const MARMOT_API_URL='http://localhost:8000/api/marmot/'
+const MARMOT_API_LOGIN_URL='http://localhost:8000/api/token/'
 
-const LikedContext = React.createContext();
-const UpdateLikedContext = React.createContext();
+const MarmotContext = React.createContext();
 
-const defaultMovieState = {
-  userId: 42,
-  userName: 'Frank the movie fan',
-  liked: [1,2,3,4,5],
-  watched: [3,33,333,3333],
-  preferredGenre: [4,44,444, 'adult']
+// Auth user/login/tokens
+export const useAuthContext = () => {
+  return useContext(AuthContext);
 }
 
-// USER Movie State
-export const useMovieDB = () => {
-  return useContext(MovieContext);
-}
-
-export const useUpdateMovieDB = () => {
-  return useContext(UpdateMovieContext);
-}
-
-// Watched List
-export const useWatchedContext = () => {
-  return useContext(WatchedContext);
-}
-export const useUpdateWatchedContext = () => {
-  return useContext(UpdateWatchedContext);
-}
-
-// Liked List
-export const useLikedContext = () => {
-  return useContext(LikedContext);
-}
-export const useUpdateLikedContext = () => {
-  return useContext(UpdateLikedContext);
+// User Movie State
+export const useMarmotContext = () => {
+  return useContext(MarmotContext);
 }
 
 const MarmotProvider = ({ children }) => {
   const [ isLoggedIn, setLoggedIn ] = useState();
-  const { resources } = useMovieResource();
-  const [ movieDB, setMovieDB ] = useState(defaultMovieState);
-  
+  const [ movieDB, setMovieDB ] = useState();
   const [ userWatched, setUserWatched ] = useState([]);
   const [ userLiked, setUserLiked ] = useState([]);
-
-
-  const updateMovieDB = (data) => {
-    const update = Object.entries(data);
-    const prev = movieDB;
-
-    update.forEach((i) => {
-      const key = i[0];
-      const value = i[1];
-      if (prev[key]) {
-        prev[key] = value;
+  const [ user, setUser ] = useState('');
+  const [ tokens, setTokens ] = useState();
+  
+  async function fetchMovies() {
+    try {
+      const response = await axios.get(MARMOT_API_URL, {
+        headers: {
+          'Authorization': 'Bearer ' + tokens 
+        }
+      });
+      if (response.status === 200) {
+        console.log(response.data);
+        setMovieDB(response.data);
+        return response.data;
       }
-    })
-    setMovieDB(prev);
+    } catch (err) {
+      console.warn(err);
+      return null;
+    }
   }
+
+  useEffect(() => {
+    if (tokens) {
+      fetchMovies()
+    }
+  },[tokens]);
 
   // Add watched
   const updateWatched = {
@@ -72,7 +56,6 @@ const MarmotProvider = ({ children }) => {
       const prev = userWatched;
       prev.push(movieID)
       setUserLiked(prev)
-      console.log('watched:', userWatched)
     },
     remove:(movieID) => {
       const prev = userWatched;
@@ -80,7 +63,6 @@ const MarmotProvider = ({ children }) => {
       if (index > -1) {
         prev.splice(index, 1)
       }
-      console.log('watched: ', userWatched)
       setUserWatched(prev)
     }
   };
@@ -91,7 +73,6 @@ const MarmotProvider = ({ children }) => {
       const prev = userLiked;
       prev.push(movieID)
       setUserLiked(prev)
-      console.log('liked:', userLiked)
     },
     remove:(movieID) => {
       const prev = userLiked;
@@ -99,37 +80,62 @@ const MarmotProvider = ({ children }) => {
       if (index > -1) {
         prev.splice(index, 1)
       }
-      console.log('liked:', userLiked)
       setUserLiked(prev)
     }
   };
 
-  // add liked
-  // remove liked
-  // add update user preferences
+  // AUTH
+  const authUser = {
+    user: user,
+    likedList: userLiked,
+    watchList: userWatched,
+    login: async (inputName, password) => {
+      console.log('logging in...')
+      try {
+        const response = await axios.post(MARMOT_API_LOGIN_URL, {
+          username: 'admin1',
+          password: 'admin1'
+        })
+        if (response.status === 200) {
+          setUser(inputName);
+          setTokens(response.data.access);
+        }
+      } catch(e) {
+        console.log('axios error in auth')
+        console.warn(e)
+      }
+    },
+    logout: () => setUser('')
+  }
 
-  // add review 
-  // edit review 
-  // delete review 
+  const movieProvider = {
+    auth:authUser,
+    movieDB: movieDB,
+    updateLiked: updateLiked,
+    updateWatched: updateWatched,
+    update: (data) => {
+      const update = Object.entries(data);
+      const prev = movieDB;
   
+      update.forEach((i) => {
+        const key = i[0];
+        const value = i[1];
+        if (prev[key]) {
+          prev[key] = value;
+        }
+      })
+      setMovieDB(data);
+   },
+  
+  }
 
   return (
-    <MovieContext.Provider value={movieDB}>
-      <UpdateMovieContext.Provider value={updateMovieDB}>
-        <WatchedContext.Provider value={userWatched}>
-          <UpdateWatchedContext.Provider value={updateWatched}>
-            <LikedContext.Provider value={userLiked}>
-              <UpdateLikedContext.Provider value={updateLiked}>
-                {children}
-              </UpdateLikedContext.Provider>
-            </LikedContext.Provider>
-          </UpdateWatchedContext.Provider>
-        </WatchedContext.Provider>
-      </UpdateMovieContext.Provider>
-    </MovieContext.Provider>
+    <AuthContext.Provider value={authUser}>
+      <MarmotContext.Provider value={movieProvider}>
+        {children}
+      </MarmotContext.Provider>
+    </AuthContext.Provider>
   )
 }
-
-
 
 export default MarmotProvider;
