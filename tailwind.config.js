@@ -16,7 +16,7 @@ module.exports = {
         darkest:'#16130f'
       },
       height: {
-        cardCarousel: '350px'
+        cardCarousel: '500px'
       },
       width: {
         movieCard: '250px'

@@ -33,3 +33,10 @@ export const GENRES = {
   mystery: "Mystery",
   documentary: "Documentary"
 }
+
+export const STREAMING_SERVICE = {
+  netflix: 'netflix',
+  hulu: 'hulu',
+  disney: 'disney',
+  paramount: 'paramount',
+}
