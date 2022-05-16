@@ -3,6 +3,8 @@ import MovieCarousel from '../sections/homePage/movieCarousel';
 import { GENRES } from '../sharedComponents/enums';
 import { useSession } from 'next-auth/react';
 import { useMovieResource } from '../sharedComponents/MarmotProvider/useMovieResource'
+import { movieSearch } from '../sharedComponents/MarmotProvider/movieSearch'
+import SearchForm from '../sections/homePage/SearchForm';
 
 import { 
   useMovieDB, 
@@ -152,7 +154,7 @@ export default function Home() {
   }
 
  const moviedata = useMovieResource();
-
+//  const movies = movieSearch();
 
   if (!isLoggedIn) {
       return <h1>Go away!</h1>
@@ -167,6 +169,7 @@ export default function Home() {
         <div><button onClick={removeWatched}>remove Watched</button></div>
 
         <MainGreeting/>
+        <SearchForm/>
         <MovieCarousel genre={GENRES.adult} movies={MovieCollection} handleLike={handleLike}/>
         <MovieCarousel genre={GENRES.adventure} movies={MovieCollection} handleLike={handleLike}/>
         <MovieCarousel genre={GENRES.crime} movies={MovieCollection} handleLike={handleLike}/>

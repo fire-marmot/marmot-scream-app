@@ -17,11 +17,11 @@ export const useMovieResource = () => {
           password: 'admin1'
         }
       );
-      const decodedAccess = jwt.decode(response.data.access);
+      // const decodedAccess = jwt.decode(response.data.access);
       const token = response.data.access;
       console.log(token);
       getMovies(token);
-      return decodedAccess;
+      return token;
     } catch (err) {
       console.log(err);
       return null;
@@ -54,3 +54,4 @@ export const useMovieResource = () => {
 
   
 }
+
