@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import NavBar from './NavBar';
 import Link from 'next/link';
 
-import { useAuthContext } from './MarmotProvider/marmotProvider';
+import { useMarmotContext } from './MarmotProvider/marmotProvider';
+
 const Header = () => {
-  const { user, login, logout } = useAuthContext();
+  const  marmotContext  = useMarmotContext();
+  const { auth } = marmotContext;
+  const { user, likedList, watchList} = auth;
 
-  
-
-  const isLoggedIn = user[0] ? true : false;
+  const isLoggedIn = user ? true : false;
 
 
   const handleLogin = (e) => {

@@ -8,14 +8,38 @@ export const user = 'admin1';
 export const pass = 'admin1';
 
 
-export const movieSearch = (title) => {
+const postMovie = async(info) =>{
+    console.log(info)
+    try{
+            const tokenid =  await axios.post(apiUrl, {
+                username: 'admin1',
+                password: 'admin1'
+              }
+            );
+            // const decodedAccess = jwt.decode(response.data.access);
+    const token = tokenid.data.access;
+    console.log(token);
+
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
+    await axios.post(defUrl, info, config);
+    }
+    catch (err) {
+    console.log(err);
+    return null;
+    }
+} 
+
+export const movieSearch = async (title) => {
+        console.log('movieSearch', title)
 /// Calls MovieDB gets movie info based off of title *** Need to pass in title from search bar
-    async function searchMovies(){
         const api_key = `4fbb40b6b07053ca3f41d2aaeb2a352b`
         
         const STREAMING_API_URL=`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${title}&page=1`
         try{
         const response = await axios.get(STREAMING_API_URL)
+        console.log(response)
         const data = response.data
         const search_data = data.results
         const id = search_data[0].id
@@ -37,78 +61,11 @@ export const movieSearch = (title) => {
         }
         
         postMovie(movieInfo)
-        console.log(search_data[0])
         return search_data
         }
         catch (err) {
             console.log(err);
             return null;
           }
-        }
-///For poster https://www.themoviedb.org/t/p/original + poster_path
-/// Get streaming service
-        // async function searchStream(id){
-        //     const api_key = `4fbb40b6b07053ca3f41d2aaeb2a352b`
-        //     const STREAMING_API_URL=`https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${api_key}`
-        //     try{
-        //     const response = await axios.get(STREAMING_API_URL)
 
-        //     return stream_serv
-        //     }
-        //     catch (err) {
-        //         console.log(err);
-        //         return null;
-        //       }
-        //     }
-
-/// Any space needs to be replaces with -
-/// netflix.com/movie_title
-/// amazon.com/movie_title
-/// hulu.com/movie_title 
-
-// const fetchResource = async () => {
-//     try {
-//       const response = await axios.post(apiUrl, {
-//           username: 'admin1',
-//           password: 'admin1'
-//         }
-//       );
-//       // const decodedAccess = jwt.decode(response.data.access);
-//       const token = response.data.access;
-//     //   console.log(token);
-//       return token;
-//     } catch (err) {
-//       console.log(err);
-//       return null;
-//     }
-//   }
-
-
-const postMovie = async(info) =>{
-
-        console.log(info)
-        try{
-                const tokenid =  await axios.post(apiUrl, {
-                    username: 'admin1',
-                    password: 'admin1'
-                  }
-                );
-                // const decodedAccess = jwt.decode(response.data.access);
-        const token = tokenid.data.access;
-        console.log(token);
-    
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        };
-        await axios.post(defUrl, info, config);
-        }
-        catch (err) {
-        console.log(err);
-        return null;
-        }
-
-
-    } 
-
-    searchMovies();
 }

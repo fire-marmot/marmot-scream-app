@@ -20,7 +20,7 @@ const SearchForm = () => {
       genre: genre
     })
     console.log(searchState)
-    movieSearch(movieTitle)
+    movieSearch(searchState.movieTitle)
     e.target.parentElement.reset()
   }
   

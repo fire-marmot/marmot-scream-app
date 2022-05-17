@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, createContext} from 'react';
 import axios from 'axios';
+import useSWR from 'swr';
 
 const AuthContext = createContext();
 
@@ -26,6 +27,7 @@ const MarmotProvider = ({ children }) => {
   const [ user, setUser ] = useState('');
   const [ tokens, setTokens ] = useState();
   
+  
   async function fetchMovies() {
     try {
       const response = await axios.get(MARMOT_API_URL, {
@@ -49,7 +51,7 @@ const MarmotProvider = ({ children }) => {
       fetchMovies()
     }
   },[tokens]);
-
+  
   // Add watched
   const updateWatched = {
     add: (movieID) => {
@@ -66,7 +68,7 @@ const MarmotProvider = ({ children }) => {
       setUserWatched(prev)
     }
   };
-
+  
   // update Liked
   const updateLiked = {
     add: (movieID) => {
@@ -83,18 +85,19 @@ const MarmotProvider = ({ children }) => {
       setUserLiked(prev)
     }
   };
-
+  
   // AUTH
   const authUser = {
     user: user,
+    tokens: tokens,
     likedList: userLiked,
     watchList: userWatched,
     login: async (inputName, password) => {
       console.log('logging in...')
       try {
         const response = await axios.post(MARMOT_API_LOGIN_URL, {
-          username: 'admin1',
-          password: 'admin1'
+          username: inputName,
+          password: password
         })
         if (response.status === 200) {
           setUser(inputName);
@@ -107,7 +110,9 @@ const MarmotProvider = ({ children }) => {
     },
     logout: () => setUser('')
   }
-
+  
+  const { data, error } = useSWR([MARMOT_API_LOGIN_URL, tokens], fetchMovies)
+  
   const movieProvider = {
     auth:authUser,
     movieDB: movieDB,
@@ -126,7 +131,6 @@ const MarmotProvider = ({ children }) => {
       })
       setMovieDB(data);
    },
-  
   }
 
   return (
