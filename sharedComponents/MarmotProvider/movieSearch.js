@@ -47,14 +47,24 @@ export const movieSearch = async (title) => {
         const stream = await axios.get(SERVICE_API_URL)
         const streamData = stream.data
         const serviceData = streamData.results
-        console.log(serviceData.US.flatrate[0])
+        // console.log(serviceData.US.flatrate[0])
         const stream_serv = serviceData.US.flatrate[0].provider_name
+        const title_parse = search_data[0].original_title.split(' ').join('')
+        console.log(title_parse)
+        let streamURL = ""
+        if(stream_serv = 'Netlfix'){streamURL= `https://www.netflix.com/search?q=${title_parse}`}
+        else if(stream_serv ='HBO' ){streamURL = `https://www.hbomax.com/${title_parse}`}
+        else if(stream_serv ='Hulu'){streamURL = `https://www.hulu.com/${title_parse}`}
+        else if(stream_serv = 'Amazon Prime Video'){streamURL = `https://www.amazon.com/${title_parse}`}
+        else {streamURL = `https://www.disneyplus.com`};
+            // `https://www.netflix.com/search?q=${search_data[0].original_title}`
+        
         const movieInfo = {
             title: search_data[0].original_title,
             movieID: search_data[0].id,
             streaming_service: stream_serv,
             average_rating: parseInt(search_data[0].vote_average),
-            streaming_url: `https://www.netflix.com/${search_data[0].original_title}`,
+            streaming_url: streamURL,
             image_url: `https://www.themoviedb.org/t/p/original${search_data[0].poster_path}`,
             description: search_data[0].overview,
             genre: search_data[0].genre_ids[0]

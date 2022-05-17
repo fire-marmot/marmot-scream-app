@@ -64,14 +64,14 @@ export default function Home(props) {
     if (movieData?.movieDB) {
       const prev = movieServices;
       let filteredMovies = movieData.movieDB;
-      console.log(movieData.movieDB.length);
+      // console.log(movieData.movieDB.length);
       if (filter.length > 0) {
         filteredMovies = movieData.movieDB.filter((movie) => filter.includes(GENRES_MAP[movie.genre]));
       }
       console.log(filteredMovies.length)
 
       filteredMovies.forEach((movie) => {
-        console.log(movie.genre)
+        // console.log(movie.genre)
           const service = movie.streaming_service.toLowerCase();
           if (!prev[service]) {
             prev[service] = [movie];
