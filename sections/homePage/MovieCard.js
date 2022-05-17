@@ -33,11 +33,11 @@ const MovieCardDescription = ({ description }) => (
   </div>
 )
 
-const MovieCard = ({ movieID, title, description, service, url, imageUrl, onMouseDown, onMouseUp, handleLike, likedMovies, handleWatch }) => {
+const MovieCard = ({ movieID, title, description, service, url, imageUrl, onMouseDown, onMouseUp, handleLike, handleWatch }) => {
   
   
   const [ heart, setHeart ] = useState(false);
-  const [ toWatch, setToWatch ] = useState(false);
+  const [ eye, setEye ] = useState(false);
 
   const { auth, updateLiked, updateWatched } = useMarmotContext();
   const { likedList, watchList } = auth;
@@ -53,26 +53,24 @@ const MovieCard = ({ movieID, title, description, service, url, imageUrl, onMous
       setHeart(false)
     }
     if (onWatchList) {
-      setToWatch(true)
+      setEye(true)
     }
     if (!onWatchList) {
-      setToWatch(false)
+      setEye(false)
     }
-  })
+  },[])
 
   return (
     <div 
       className='bg-black rounded-md w-movieCard text-sm min-w-[200px] m-2 p-1 hover:scale-105' 
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
     >
       <MovieCardImage imageUrl={imageUrl} url={url} />
       <MovieCardTitle title={title} />
       <MovieCardDescription description={description} />
       <div className='text-secondary'>Streaming On: {service}</div>
-      <div className='flex justify-center m-1'>
-      <HeartIcon handleLike={handleLike} isLiked={heart} movieID={movieID}/>
-      <EyeImage handleWatch={handleWatch} onWatchList={toWatch} movieID={movieID}/>
+      <div className='flex justify-between m-1'>
+      <HeartIcon handleLike={handleLike} heart={heart} setHeart={setHeart} movieID={movieID}/>
+      <EyeImage handleWatch={handleWatch}  eye={eye} setEye={setEye} movieID={movieID}/>
       </div>
     </div>
   )
