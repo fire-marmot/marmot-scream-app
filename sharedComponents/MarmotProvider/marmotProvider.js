@@ -4,8 +4,8 @@ import useSWR from 'swr';
 
 const AuthContext = createContext();
 
-const MARMOT_API_URL='http://localhost:8000/api/marmot/'
-const MARMOT_API_LOGIN_URL='http://localhost:8000/api/token/'
+const MARMOT_API_URL='http://3.91.192.92:8000/api/marmot/';
+const MARMOT_API_LOGIN_URL='http://3.91.192.92:8000/api/token/'
 
 const MarmotContext = React.createContext();
 
