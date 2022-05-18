@@ -1,43 +1,42 @@
 import React from 'react';
 import NavBar from './NavBar';
-import { useSession, getSession } from 'next-auth/react';
-import { signIn, signOut } from 'next-auth/react';
 import Link from 'next/link';
 
-const handleLogin = (e) => {
-  e.preventDefault();
-    signIn();
-}
-
-const handleLogOut = (e) => {
-  e.preventDefault();
-  signOut();
-}
-
-const SignInButton = ({ session }) => {
-  const handler = session ? handleLogOut : handleLogin;
-  return (
-    <Link href='/home'>
-      <a className='p-3 text-light bg-primary hover:bg-light hover:text-dark rounded m-2'
-         onClick={handler}
-      >
-      {session ? 'sign out' : 'sign in'}
-      </a>
-    </Link>
-)}
+import { useMarmotContext } from './MarmotProvider/marmotProvider';
+import MainGreeting from '../sections/homePage/HeroHeader';
 
 const Header = () => {
-  const { data : session }  = useSession();
+  const  marmotContext  = useMarmotContext();
+  const { auth } = marmotContext;
+  const { user, likedList, watchList, login, logout} = auth;
 
-  console.log(session);
+  const isLoggedIn = user ? true : false;
+
+  const handleClick = isLoggedIn ? logout : null;
+
+const SignInButton = ({ isLoggedIn }) => {
   return (
-    <div className="flex justify-between bg-dark">
-      <NavBar/>
-      <div className='justify-end'>
-        <SignInButton session={session}/>
-      </div>
-    </div>
+      <Link href='/auth/loginPage'>
+        <a className='p-3 text-light bg-primary hover:bg-light hover:text-dark rounded m-2'
+        onClick={handleClick}
+        >
+        {isLoggedIn ? 'Log Out' : 'Log In'}
+        </a>
+      </Link>
+)}
+
+  return (
+    <>
+      <MainGreeting/>
+   
+      <div className="flex justify-between bg-darkest pr-5">   
+        <NavBar/>
+          {isLoggedIn && <div className='m-2 text-light text-2xl'>Welcome {user}</div>}
+            <SignInButton isLoggedIn={isLoggedIn}/>
+        </div>
+    </>
   )
 }
+
 
 export default Header;

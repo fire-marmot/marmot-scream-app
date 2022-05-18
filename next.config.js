@@ -11,7 +11,13 @@ const nextConfig = {
     ]
   },
   images: {
-    domains: ['www.badmovies.org']
+    domains: [
+      'www.badmovies.org', 
+      'image.tmdb.org', 
+      'www.netflix.com',
+      'www.themoviedb.org',
+      'www.themoviedb.org'
+    ]
   }
 }
 
