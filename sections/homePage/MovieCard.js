@@ -32,7 +32,7 @@ const MovieCardDescription = ({ description }) => (
   </div>
 )
 
-const MovieCard = ({ movieID, title, description, service, url, imageUrl, onMouseDown, onMouseUp, handleLike, handleWatch }) => {
+const MovieCard = ({ movieID, title, description, service, url, imageUrl, handleLike, handleWatch }) => {
   
   
   const [ heart, setHeart ] = useState(false);
