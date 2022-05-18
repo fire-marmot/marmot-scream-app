@@ -19,8 +19,8 @@ const MovieCarousel = ({ genre, movies, handleLike, likedMovies, handleWatch, wa
     <div 
       className='grid grid-cols-4 h-cardCarousel drag-container cursor-grab overflow-auto'
       >
-      <div className='font-sans text-primary text-left col-span-1 text-3xl font-extrabold'>{genre}</div>
-      <div className='col-span-10 flex flex-nowrap overflow-x-scroll container mx-auto scrollbar-hide scrolling-touch items-start bg-primary rounded-md p-2'>
+      <div className='font-sans text-primary text-left col-span-1 text-3xl font-extrabold uppercase'>{genre}</div>
+      <div className='col-span-10 flex flex-nowrap overflow-x-scroll container mx-auto scrollbar-hide scrolling-touch items-start rounded-md p-2'>
         {movies.map((movie, idx) => (
           <MovieCard
             key={`${idx} - ${movie.title}`}

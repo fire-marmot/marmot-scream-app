@@ -36,7 +36,6 @@ const MarmotProvider = ({ children }) => {
         }
       });
       if (response.status === 200) {
-        console.log(response.data);
         setMovieDB(response.data);
         return response.data;
       }
@@ -93,7 +92,6 @@ const MarmotProvider = ({ children }) => {
     likedList: userLiked,
     watchList: userWatched,
     login: async (inputName, password) => {
-      console.log('logging in...')
       try {
         const response = await axios.post(MARMOT_API_LOGIN_URL, {
           username: inputName,

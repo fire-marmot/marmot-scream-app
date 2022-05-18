@@ -6,14 +6,12 @@ import Link from 'next/link';
 const routeMap = {
   'home': 'home',
   'about': 'aboutPage',
-  'search': 'searchPage',
 }
-
 
 const routing = Object.entries(routeMap);
 
 const NavBar = () => (
-  <div className='flex bg-darkest'>
+  <div className='flex bg-darkest pl-5'>
     {routing.map((i, idx) => (
       <Link key={idx + i[0]} href={i[1]}>
         <a className='p-3 text-light bg-primary hover:bg-light hover:text-dark rounded m-2'>{i[0]}</a>

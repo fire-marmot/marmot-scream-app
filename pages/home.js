@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import MainGreeting from '../sections/homePage/mainGreeting';
+import MainGreeting from '../sections/homePage/HeroHeader';
 import MovieCarousel from '../sections/homePage/movieCarousel';
 import SearchForm from '../sections/homePage/SearchForm';
 import FilterForm from '../sections/homePage/FilterForm';
 import { GENRES, GENRES_MAP, STREAMING_SERVICE } from '../sharedComponents/enums';
 
 import { useMarmotContext } from '../sharedComponents/MarmotProvider/marmotProvider';
+import HomeGreeting from '../sections/homePage/HomeGreeting';
 
 
 export default function Home(props) {
   const movieData = useMarmotContext();
   const [ movieServices, setMoviesServices ] = useState({});
   const [ filter, setFilter ] = useState([]);
-  console.log(movieData)
   
   // user data in context
   const { auth, updateLiked, updateWatched } = movieData;
@@ -81,11 +81,16 @@ export default function Home(props) {
   const movieArr = Object.entries(movieServices);
   const hasData = !!(movieArr?.length > 0);
   const hasUser = !!(user)
-  return (
+  
 
+  if (!hasData) {
+    return (
+      <HomeGreeting/>
+    )
+  }
+
+  return (
       <main className="text-center m-5 pt-5" id='main-content'>
-        <MainGreeting/>
-      
       <div>
         {hasUser && <FilterForm setFilter={setFilter}/>}
         <SearchForm/>

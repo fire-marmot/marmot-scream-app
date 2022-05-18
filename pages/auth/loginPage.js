@@ -28,9 +28,9 @@ const LogInForm = () => {
   }
 
   return (
-    <div className="flex justify-center text-center">
+    <div className="flex justify-center text-center text-light">
       <form onChange={handleChange}>
-        <div className="bg-emerald-300 border-2 border-emerald-500 m-4 rounded-md p-3 flex-col basis-1/2 justify-center">
+        <div className="bg-darkest drop-shadow-lg 0 border-2 m-4 rounded-md p-3 flex-col basis-1/2 justify-center">
           <div className="m-3 w-96 p-2">
             <label 
               htmlFor="userName"
@@ -55,7 +55,7 @@ const LogInForm = () => {
               className="w-full h-8 mt-3"
               ></input>
           </div>
-          <div className="bg-emerald-500 rounded m-3 active:bg-pink-50 hover:cursor-pointer">
+          <div className="rounded m-3 active:bg-pink-50 hover:cursor-pointer p-3 text-light bg-primary hover:bg-light hover:text-dark rounded m-2">
             <Link
               href='/home'>
               <a onClick={handelLoginSubmit}
