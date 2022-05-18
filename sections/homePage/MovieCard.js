@@ -6,8 +6,7 @@ import { useMarmotContext } from '../../sharedComponents/MarmotProvider/marmotPr
 
 
 const MovieCardImage = ({ imageUrl, url }) => (
-  <Link href={url}>
-    <a>
+    <a href={url} rel='noReferrer' target='_blank'>
       <Image
         className="border rounded"
         alt='movie pic'
@@ -16,11 +15,10 @@ const MovieCardImage = ({ imageUrl, url }) => (
         width={200}
         />
       </a>
-  </Link>
 )
 
 const MovieCardTitle = ({ title }) => (
-  <div className='text-white text-m max-w-lg mx-auto'>
+  <div className='text-white text-m max-w-lg mx-auto h-12'>
     {title}
   </div>
 )
