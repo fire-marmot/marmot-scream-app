@@ -16,8 +16,8 @@
     },
     Chris : {
       title: 'Chris ',
-      image: '/personalPics/FaceFace.png',
-      description: 'I live in the middle of nowhere...there\'s corn here'
+      image: '/personalPics/profile.png',
+      description: `Software Engineer with a background in Data Analytics.I decided on a career change to coding when I was exposed to the problem solving capablities of Python. In the furture I hope to join a fast paced company that challenges me`
     },
     Josh : {
       title: 'Josh',
