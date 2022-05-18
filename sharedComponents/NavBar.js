@@ -6,6 +6,7 @@ import Link from 'next/link';
 const routeMap = {
   'home': 'home',
   'about': 'aboutPage',
+  // 'user' : 'userPage'
 }
 
 const routing = Object.entries(routeMap);

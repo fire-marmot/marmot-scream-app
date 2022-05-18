@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import MovieCard from './MovieCard';
+import MovieCard from '../homePage/MovieCard';
 
-const MovieCarousel = ({ genre, movies, handleLike, likedMovies, handleWatch, watchList}) => {
+const MovieCarouselUserPage = ({ genre, movies, handleLike, handleWatch, likedMovies, watchList}) => {
   const hasMovies = !!(movies?.length > 0);
   
   if (!hasMovies) {
@@ -39,4 +39,4 @@ const MovieCarousel = ({ genre, movies, handleLike, likedMovies, handleWatch, wa
     </div>
   )
 }
-export default MovieCarousel;
+export default MovieCarouselUserPage;
