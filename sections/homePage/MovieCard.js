@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { HeartIcon, EyeImage } from '../../sharedComponents/Icons';
 import { useMarmotContext } from '../../sharedComponents/MarmotProvider/marmotProvider';
+import { STREAMING_SERVICE } from '../../sharedComponents/enums';
 
 
 const MovieCardImage = ({ imageUrl, url }) => (

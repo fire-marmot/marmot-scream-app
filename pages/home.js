@@ -17,6 +17,7 @@ export default function Home(props) {
   // user data in context
   const { auth, updateLiked, updateWatched } = movieData;
   const { user, likedList, watchList } = auth;
+  console.log(auth)
 
   // Like / watch events modify context state
   const addWatched = (movieID) => {
@@ -36,7 +37,6 @@ export default function Home(props) {
   }
 
   const handleLike = ( movieID ) => {
-    console.log('like')
     const prev = likedList;
     const index = prev.indexOf(movieID)
     if (likedList.includes(movieID)) {
@@ -48,7 +48,6 @@ export default function Home(props) {
 
   const handleWatch = ( movieID ) => {
     const prev = watchList;
-    console.log(prev)
     const index = prev.indexOf(movieID)
     if (watchList.includes(movieID)) {
       removeWatched(movieID);
