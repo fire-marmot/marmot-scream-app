@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import MovieCarousel from '../sections/homePage/movieCarousel';
-import SearchForm from '../sections/homePage/SearchForm';
-import FilterForm from '../sections/homePage/FilterForm';
-import { GENRES, GENRES_MAP, STREAMING_SERVICE } from '../sharedComponents/enums';
-
 import { useMarmotContext } from '../sharedComponents/MarmotProvider/marmotProvider';
-import HomeGreeting from '../sections/homePage/HomeGreeting';
+import MovieCarouselUserPage from '../sections/userPage/MovieCarouselUserPage';
 
-export default function Home(props) {
+const UserPage = () => {
   const movieData = useMarmotContext();
   const [ movieServices, setMoviesServices ] = useState({});
   const [ filter, setFilter ] = useState([]);
   
   // user data in context
-  const { auth, updateLiked, updateWatched, update } = movieData;
+  const { auth, movieDB, updateLiked, updateWatched, update } = movieData;
   const { user, likedList, watchList } = auth;
 
   // Like / watch events modify context state
@@ -73,35 +68,50 @@ export default function Home(props) {
       })
     }
   });
-
-  const movieArr = Object.entries(movieServices);
-  const hasData = !!(movieArr?.length > 0);
   
-  if (!hasData) {
-    return (
-      <HomeGreeting/>
-    )
-  }
+  const filteredLikes = movieDB?.filter((i) => likedList.includes(i.movieID));
+  const filteredWatch = movieDB?.filter((i) => watchList.includes(i.movieID));
+
+  const hasLikes = !!(likedList?.length > 0);
+  const hasWatched =!!(watchList?.length > 0);
 
   return (
-      <main className="text-center m-5 pt-5" id='main-content'>
-      <div>
-        {/* {hasUser && <FilterForm setFilter={setFilter}/>} */}
-        <SearchForm/>
-      </div>
-
-      {hasData && (movieArr.map((i, idx) => (
-        <MovieCarousel
-          key={idx + 555}
-          likedMovies={likedList}
+    <>
+    {/* {hasWatched
+      ? <MovieCarouselUserPage
+          genre={`Your Watch List`}
+          movies={filteredWatch}
           watchList={watchList}
-          genre={i[0]} 
-          movies={i[1]} 
+          likedMovies={likedList}
           handleLike={handleLike}
           handleWatch={handleWatch}
-        />
-        ))
-      )}
-      </main>
+          />
+      : (
+          <>
+          <div className='font-sans text-primary text-left col-span-1 text-3xl font-extrabold uppercase'>{'Your Watch List'}</div>
+          <p className='text-light text-left h-96'>Poke some hearts to save for later</p>
+          </>
+        )
+      } */}
+
+      {hasLikes
+        ? <MovieCarouselUserPage
+            genre={`${user}'s Saved Movies`}
+            movies={filteredLikes}
+            watchList={watchList}
+            likedMovies={likedList}
+            handleWatch={handleWatch}
+            handleLike={handleLike}
+          />
+        : (
+        <>
+          <div className='font-sans text-primary text-left col-span-1 text-3xl font-extrabold uppercase'>{'Liked Movies'}</div>
+          <p className='text-light text-left h-96'>Go heart some movies to like the crap out of them</p>
+        </>
+        )
+      }
+    </>
   )
 }
+
+export default UserPage;
