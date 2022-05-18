@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useContext, createContext} from 'react';
 import axios from 'axios';
 import useSWR from 'swr';
+import jwt from 'jsonwebtoken';
 
 const AuthContext = createContext();
 
 const MARMOT_API_URL='http://3.91.192.92:8000/api/marmot/';
-const MARMOT_API_LOGIN_URL='http://3.91.192.92:8000/api/token/'
+const MARMOT_API_LOGIN_URL='http://3.91.192.92:8000/api/token/';
+const MARMOT_API_UPDATE_USER='http://3.91.192.92:8000/api/marmot/user';
+
 
 const MarmotContext = React.createContext();
 
@@ -20,14 +23,28 @@ export const useMarmotContext = () => {
 }
 
 const MarmotProvider = ({ children }) => {
-  const [ isLoggedIn, setLoggedIn ] = useState();
   const [ movieDB, setMovieDB ] = useState();
   const [ userWatched, setUserWatched ] = useState([]);
   const [ userLiked, setUserLiked ] = useState([]);
   const [ user, setUser ] = useState('');
+  const [ userID, setUserID ] = useState('');
   const [ tokens, setTokens ] = useState();
   
   
+  const userUpdateBodyBuilder = () => ({
+    user_name: user,
+    liked: userLiked,
+    watched: userWatched,
+  });
+  
+  async function updateUser() {
+    const url = `MARMOT_API_UPDATE_USER/${userID}`;
+    const updatedUserPost = userUpdateBodyBuilder();
+    const response = await axios.post(MARMOT_API_UPDATE_USER, updatedUserPost)
+    console.log(response);
+  }
+  
+
   async function fetchMovies() {
     try {
       const response = await axios.get(MARMOT_API_URL, {
@@ -89,6 +106,7 @@ const MarmotProvider = ({ children }) => {
   const authUser = {
     user: user,
     tokens: tokens,
+    userId: userID,
     likedList: userLiked,
     watchList: userWatched,
     login: async (inputName, password) => {
@@ -100,6 +118,8 @@ const MarmotProvider = ({ children }) => {
         if (response.status === 200) {
           setUser(inputName);
           setTokens(response.data.access);
+          const tokenInfo = jwt.decode(response.data.access);
+          setUserID(tokenInfo?.user_id)
         }
       } catch(e) {
         console.log('axios error in auth')

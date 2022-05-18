@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SHOW_TYPES, STREAMING_SERVICE, GENRES } from '../../sharedComponents/enums';
+import { GENRES } from '../../sharedComponents/enums';
 
 const FilterForm = ({ setFilter }) => {
   const genreArr = Object.entries(GENRES);

@@ -13,7 +13,7 @@ const MovieCarousel = ({ genre, movies, handleLike, likedMovies, handleWatch, wa
       </>
     )
   }
-  
+
 
   return (
     <div 

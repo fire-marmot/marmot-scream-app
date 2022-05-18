@@ -9,8 +9,7 @@ export const pass = 'admin1';
 
 
 const postMovie = async(info) =>{
-    console.log(info)
-    try{
+    try {
             const tokenid =  await axios.post(apiUrl, {
                 username: 'admin1',
                 password: 'admin1'
@@ -18,7 +17,6 @@ const postMovie = async(info) =>{
             );
             // const decodedAccess = jwt.decode(response.data.access);
     const token = tokenid.data.access;
-    console.log(token);
 
     const config = {
         headers: { Authorization: `Bearer ${token}` }
@@ -39,7 +37,6 @@ export const movieSearch = async (title) => {
         const STREAMING_API_URL=`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${title}&page=1`
         try{
         const response = await axios.get(STREAMING_API_URL)
-        console.log(response)
         const data = response.data
         const search_data = data.results
         const id = search_data[0].id
@@ -47,7 +44,6 @@ export const movieSearch = async (title) => {
         const stream = await axios.get(SERVICE_API_URL)
         const streamData = stream.data
         const serviceData = streamData.results
-        // console.log(serviceData.US.flatrate[0])
         const stream_serv = serviceData.US.flatrate[0].provider_name
         const title_parse = search_data[0].original_title.split(' ').join('')
         console.log(title_parse)
@@ -77,5 +73,4 @@ export const movieSearch = async (title) => {
             console.log(err);
             return null;
           }
-
 }

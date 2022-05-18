@@ -35,7 +35,6 @@ export const GENRES = {
 }
 
 
-
 export const STREAMING_SERVICE = {
   netflix: 'netflix',
   hulu: 'hulu',
