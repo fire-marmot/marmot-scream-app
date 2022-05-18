@@ -45,20 +45,25 @@ export const movieSearch = async (title) => {
         const streamData = stream.data
         const serviceData = streamData.results
         const stream_serv = serviceData.US.flatrate[0].provider_name
+        console.log(stream_serv)
+        let stream_name = ""
+        if(stream_serv === 'Amazon Prime Video'){stream_name = 'prime'}
+        else if(stream_serv === 'Disney Plus'){stream_name = 'disney'}
+        else {stream_name = stream_serv}
+        console.log(stream_name)
         const title_parse = search_data[0].original_title.split(' ').join('')
-        console.log(title_parse)
         let streamURL = ""
-        if(stream_serv = 'Netlfix'){streamURL= `https://www.netflix.com/search?q=${title_parse}`}
-        else if(stream_serv ='HBO' ){streamURL = `https://www.hbomax.com/${title_parse}`}
-        else if(stream_serv ='Hulu'){streamURL = `https://www.hulu.com/${title_parse}`}
-        else if(stream_serv = 'Amazon Prime Video'){streamURL = `https://www.amazon.com/${title_parse}`}
+        if(stream_serv === 'Netlfix'){streamURL= `https://www.netflix.com/search?q=${title_parse}`}
+        else if(stream_serv ==='HBO' ){streamURL = `https://www.hbomax.com/${title_parse}`}
+        else if(stream_serv ==='Hulu'){streamURL = `https://www.hulu.com/${title_parse}`}
+        else if(stream_serv === 'Amazon Prime Video'){streamURL = `https://www.amazon.com/${title_parse}`}
         else {streamURL = `https://www.disneyplus.com`};
             // `https://www.netflix.com/search?q=${search_data[0].original_title}`
         
         const movieInfo = {
             title: search_data[0].original_title,
             movieID: search_data[0].id,
-            streaming_service: stream_serv,
+            streaming_service: stream_name,
             average_rating: parseInt(search_data[0].vote_average),
             streaming_url: streamURL,
             image_url: `https://www.themoviedb.org/t/p/original${search_data[0].poster_path}`,
