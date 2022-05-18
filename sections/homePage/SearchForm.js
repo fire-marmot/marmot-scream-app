@@ -19,9 +19,8 @@ const SearchForm = () => {
       movieTitle: movieTitle,
       genre: genre
     })
-    console.log(searchState)
     movieSearch(searchState.movieTitle)
-    e.target.parentElement.reset()
+    e.target.reset()
   }
   
   const handleChange = (e) => {
@@ -34,32 +33,24 @@ const SearchForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>Movie Search</h3>
-
-      <label htmlFor='type'>Type</label>
-        <select onChange={handleChange} name='type'>
-          {showTypes.map((i, idx) => (
-            <option key={idx + i[0]} value={i[0]}>{i[1]}</option>
-          ))}
-        </select>
-
-      <label>Genre</label>
-        <select onChange={handleChange} name='genre'>
-          {genreArr.map((i, idx) => (
-            <option key={idx + i[0]} value={i[0]}>{i[1]}</option>
-          ))}
-        </select>
-      
-      <label>Movie Title</label>
+    <form onSubmit={handleSubmit} className='flex justify-center'>
+      <div>
         <input
+          className='w-96'
           type='text'
           name='movieTitle'
-          placeholder='search by title'
+          placeholder='search by title...'
           onChange={handleChange}
-        />
-
-      <button type='submit' onClick={handleSubmit}>Search</button>
+          />
+        </div>
+      <div>
+      <button 
+        className='text-light bg-primary hover:bg-light hover:text-dark rounded  ml-4 w-24'
+        type='submit'
+        > 
+          Search
+        </button>
+      </div>
     </form>
   )
 }

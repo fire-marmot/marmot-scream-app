@@ -1,9 +1,9 @@
 
  export const FireMarmot = {
    Ian : {
-     title: 'Ian VanLung',
-     image: '/personalPics/FaceFace.png',
-     description: 'I found a wooden shoe in my toilet today. It was clogged.'
+     title: 'Ian Cargill',
+     image: '/personalPics/ian.jpeg',
+     description: "Software Developer at Trulia. I like computer things and outdoor things.",
     },
     Clarissa : {
       title: 'Clarissa',
