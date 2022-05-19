@@ -136,21 +136,22 @@ const MarmotProvider = ({ children }) => {
     movieDB: movieDB,
     updateLiked: updateLiked,
     updateWatched: updateWatched,
-    update: (data) => {
-      const update = Object.entries(data);
-      const prev = movieDB;
-  
-      update.forEach((i) => {
-        const key = i[0];
-        const value = i[1];
-        if (prev[key]) {
-          prev[key] = value;
-        }
-      })
-      setMovieDB(data);
+    update: () => {
+      if (data) {
+        const update = Object.entries(data);
+        const prev = movieDB;
+        
+        update.forEach((i) => {
+          const key = i[0];
+          const value = i[1];
+          if (prev[key]) {
+            prev[key] = value;
+          }
+        })
+        setMovieDB(data);
+      }
    },
   }
-
   return (
     <AuthContext.Provider value={authUser}>
       <MarmotContext.Provider value={movieProvider}>

@@ -13,7 +13,7 @@ export default function Home(props) {
   const [ filter, setFilter ] = useState([]);
   
   // user data in context
-  const { auth, updateLiked, updateWatched } = movieData;
+  const { auth, updateLiked, updateWatched, update } = movieData;
   const { user, likedList, watchList } = auth;
 
   // Like / watch events modify context state
@@ -26,11 +26,11 @@ export default function Home(props) {
   }
 
   const addLiked = (movieID) => {
-    updateLiked.add(movieID)
+    updateLiked.add(movieID);
   }
   
   const removeLiked = (movieID) => {
-    updateLiked.remove(movieID)
+    updateLiked.remove(movieID);
   }
 
   const handleLike = ( movieID ) => {
@@ -41,6 +41,7 @@ export default function Home(props) {
     } else {
       addLiked(movieID);
     }
+    update();
   }
 
   const handleWatch = ( movieID ) => {
@@ -51,8 +52,8 @@ export default function Home(props) {
     } else {
       addWatched(movieID);
     }
+    update();
   }
-
   useEffect(() => {
     if (movieData?.movieDB) {
       const prev = movieServices;
@@ -75,7 +76,6 @@ export default function Home(props) {
 
   const movieArr = Object.entries(movieServices);
   const hasData = !!(movieArr?.length > 0);
-  const hasUser = !!(user)
   
   if (!hasData) {
     return (

@@ -26,7 +26,7 @@ const SignInButton = ({ isLoggedIn }) => {
 )}
 
   return (
-    <>
+    <div className=''>
       <MainGreeting/>
    
       <div className="flex justify-between pr-5 bg-darkest">   
@@ -34,7 +34,7 @@ const SignInButton = ({ isLoggedIn }) => {
           {isLoggedIn && <div className='m-2 text-2xl text-light'>Welcome {user}</div>}
             <SignInButton isLoggedIn={isLoggedIn}/>
         </div>
-    </>
+    </div>
   )
 }
 
