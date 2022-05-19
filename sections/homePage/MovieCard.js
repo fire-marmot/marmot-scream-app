@@ -69,7 +69,7 @@ const MovieCard = ({ movieID, title, description, service, url, imageUrl, handle
       <div className='text-secondary'>Streaming On: {service}</div>
       <div className='flex justify-between m-1'>
       <HeartIcon handleLike={handleLike} heart={heart} setHeart={setHeart} movieID={movieID}/>
-      <EyeImage handleWatch={handleWatch}  eye={eye} setEye={setEye} movieID={movieID}/>
+      {/* <EyeImage handleWatch={handleWatch}  eye={eye} setEye={setEye} movieID={movieID}/> */}
       </div>
     </div>
   )

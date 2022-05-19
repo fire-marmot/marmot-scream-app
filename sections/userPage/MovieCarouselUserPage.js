@@ -16,7 +16,6 @@ const MovieCarouselUserPage = ({ genre, movies, handleLike, handleWatch, likedMo
 
   return (
     <div 
-      className='grid grid-cols-4 h-cardCarousel drag-container cursor-grab overflow-auto'
       >
       <div className='font-sans text-primary text-left col-span-1 text-3xl font-extrabold uppercase'>{genre}</div>
       <div className='col-span-10 flex flex-nowrap overflow-x-scroll container mx-auto scrollbar-hide scrolling-touch items-start rounded-md p-2'>
