@@ -7,19 +7,21 @@ const MovieCarousel = ({ genre, movies, handleLike, likedMovies, handleWatch, wa
   if (!hasMovies) {
     return (
       <>
-      <div className='font-sans text-primary text-left col-span-1 text-3xl font-extrabold'>{genre}</div>
-      <div className='col-span-10 flex flex-nowrap overflow-x-scroll container mx-auto scrollbar-hide scrolling-touch items-start bg-primary rounded-md p-2'></div>
+      <div className='col-span-1 font-sans text-3xl font-extrabold text-left text-primary'>{genre}</div>
+      <div className='container flex items-start col-span-10 p-2 mx-auto overflow-x-scroll scrolling-touch rounded-md flex-nowrap scrollbar-hide bg-primary'></div>
       <h3>no movies</h3>
       </>
     )
   }
 
   return (
+
     <div 
-      className='grid grid-cols-4 h-cardCarousel drag-container cursor-grab overflow-auto'
+      className='grid grid-cols-4 overflow-auto h-cardCarousel drag-container cursor-grab'
       >
-      <div className='font-sans text-primary text-left col-span-1 text-3xl font-extrabold uppercase'>{genre}</div>
-      <div className='col-span-10 flex flex-nowrap overflow-x-scroll container mx-auto scrollbar-hide scrolling-touch items-start rounded-md p-2'>
+      <div className='col-span-1 font-sans text-3xl font-extrabold text-left uppercase text-primary'>{genre}</div>
+      <div className='container flex items-start col-span-10 p-2 mx-auto overflow-x-scroll scrolling-touch rounded-md flex-nowrap scrollbar-hide'>
+
         {movies.map((movie, idx) => (
           <MovieCard
             key={`${idx} - ${movie.title}`}

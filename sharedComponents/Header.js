@@ -17,7 +17,7 @@ const Header = () => {
 const SignInButton = ({ isLoggedIn }) => {
   return (
       <Link href='/auth/loginPage'>
-        <a className='p-3 text-light bg-primary hover:bg-light hover:text-dark rounded m-2'
+        <a className='p-3 m-2 rounded text-light bg-primary hover:bg-light hover:text-dark'
         onClick={handleClick}
         >
         {isLoggedIn ? 'Log Out' : 'Log In'}
@@ -29,9 +29,9 @@ const SignInButton = ({ isLoggedIn }) => {
     <div className=''>
       <MainGreeting/>
    
-      <div className="flex justify-between bg-darkest pr-5">   
+      <div className="flex justify-between pr-5 bg-darkest">   
         <NavBar/>
-          {isLoggedIn && <div className='m-2 text-light text-2xl'>Welcome {user}</div>}
+          {isLoggedIn && <div className='m-2 text-2xl text-light'>Welcome {user}</div>}
             <SignInButton isLoggedIn={isLoggedIn}/>
         </div>
     </div>
