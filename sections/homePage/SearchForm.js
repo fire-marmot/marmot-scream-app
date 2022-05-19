@@ -36,7 +36,7 @@ const SearchForm = () => {
     <form onSubmit={handleSubmit} className='flex justify-center'>
       <div>
         <input
-          className='w-96'
+          className='pl-2 border-2 rounded border-light w-96'
           type='text'
           name='movieTitle'
           placeholder='search by title...'
@@ -45,14 +45,13 @@ const SearchForm = () => {
         </div>
       <div>
       <button 
-        className='w-24 ml-4 rounded text-light bg-primary hover:bg-light hover:text-dark'
+        className='w-24 p-0.5 ml-4 rounded text-light bg-primary hover:bg-light hover:text-dark' 
         type='submit'
         > 
           Search
         </button>
       </div>
     </form>
-    </>
   )
 }
 

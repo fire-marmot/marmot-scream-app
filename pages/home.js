@@ -84,7 +84,7 @@ export default function Home(props) {
   }
 
   return (
-      <main className="pt-5 m-5 text-center" id='main-content'>
+      <main className="pt-5 m-10 text-center" id='main-content'>
       <div>
         {/* {hasUser && <FilterForm setFilter={setFilter}/>} */}
         <SearchForm/>
