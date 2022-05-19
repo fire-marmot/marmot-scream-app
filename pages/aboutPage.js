@@ -6,9 +6,9 @@ import TeamFireMarmot from '../sections/aboutPage/TeamFireMarmot';
 const AboutPage = () => {
 
   return (
-    <div className='container m-auto'>
-      <h1 className='text-primary text-5xl p-3'>Team Fire Marmot</h1>
-      <div className=''>
+    <>
+      <h1 className='text-2xl text-primary'>About Page</h1>
+      <div className='flex'>
         <TeamFireMarmot/>
       </div>
     </div>

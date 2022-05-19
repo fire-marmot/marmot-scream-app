@@ -7,8 +7,8 @@
     },
     Clarissa : {
       title: 'Clarissa',
-      image: '/personalPics/FaceFace.png',
-      description: 'What does a baby computer call his father? Data.'
+      image: '/personalPics/clarissa.jpg',
+      description: 'My name is Clarissa, Im a software developer. Previously I worked in the telecommunications industry as an inventory manager, where I was responsible for organizing and overseeing the supply chain. Identifying problems and their root cause, as well as finding solutions to prevent them in the future has been one of my greatest strengths not only in my jobs, but in life as well. As a software developer, this has helped me debug and find errors in code. My obsessive attention to detail and love for puzzle solving drives my desire to learn more about building flawless applications. I grew up as a competitive gamer and Im looking for an opportunity to turn my passion for technology into a career where I can build products that people from all backgrounds can fall in love with.'
     },
    Bionca: {
     title: 'Bionca Bond',

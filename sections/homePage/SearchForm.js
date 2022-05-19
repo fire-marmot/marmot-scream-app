@@ -8,6 +8,7 @@ genreArr.sort();
 const showTypes = Object.entries(SHOW_TYPES);
 
 const SearchForm = () => {
+
   const [ searchState, setSearchState ] = useState({});
   const [ type, setType ] = useState('');
   const [ movieTitle, setMovieTitle ] = useState('');
@@ -15,8 +16,6 @@ const SearchForm = () => {
   const [showModal, setShowModal] = useState(false);
   const [movieData, setmovieData] = useState({});
 
-
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchState({
@@ -35,13 +34,15 @@ const SearchForm = () => {
     setTimeout(function(){setShowModal(true);},1000);
     e.target.reset()
   }
+
   console.log(movieData);
+
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
     setSearchState({
       ...searchState,
-      [name] : value
+      [name]: value
     })
   }
 
@@ -50,7 +51,7 @@ const SearchForm = () => {
     <form onSubmit={handleSubmit} className='flex justify-center'>
       <div>
         <input
-          className='w-96'
+          className='pl-2 border-2 rounded border-light w-96'
           type='text'
           name='movieTitle'
           placeholder='search by title...'
@@ -59,7 +60,7 @@ const SearchForm = () => {
         </div>
       <div>
       <button 
-        className='text-light bg-primary hover:bg-light hover:text-dark rounded  ml-4 w-24'
+        className='w-24 p-0.5 ml-4 rounded text-light bg-primary hover:bg-light hover:text-dark' 
         type='submit'
         > 
           Search
