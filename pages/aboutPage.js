@@ -6,7 +6,7 @@ import TeamFireMarmot from '../sections/aboutPage/TeamFireMarmot';
 const AboutPage = () => {
 
   return (
-    <>
+    <div>
       <h1 className='text-2xl text-primary'>About Page</h1>
       <div className='flex'>
         <TeamFireMarmot/>
