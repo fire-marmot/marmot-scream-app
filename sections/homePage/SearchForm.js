@@ -31,7 +31,7 @@ const SearchForm = () => {
     };
     movie();
     
-    setTimeout(function(){setShowModal(true);},1000);
+    setTimeout(function(){setShowModal(true);},3000);
     e.target.reset()
   }
 
