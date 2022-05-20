@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const HeroHeader = () => (
-  <div className='flex m-2 pl-5'>
+  <div className='flex pl-5 mb-8 ml-10'>
     <Image 
       className='rounded-full'
       height={200}
@@ -10,9 +10,9 @@ const HeroHeader = () => (
       alt='hip marmot'
       src={'/marmothipster.jpg'}
     />
-    <div className='block'>
-      <div className="font-bold text-7xl text-primary pl-10"> Marmot Movies</div>
-      <div className='text-light pl-10'>{"See what's streaming now"}</div>
+    <div className='justify-center block pl-20'>
+      <div className="pt-4 pl-20 mt-10 font-bold text-7xl text-primary"> Marmot Movies</div>
+      <div className='pl-10 text-light'>{"See what's streaming now"}</div>
     </div>
   </div>
 )

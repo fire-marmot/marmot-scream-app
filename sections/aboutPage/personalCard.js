@@ -14,19 +14,19 @@ const PersonalCardImage = ({ src }) => (
 )
 
 const PersonalCardHeader = ({ cardHeader }) => (
-  <div className='text-center p-2'>
+  <div className='p-2 text-center'>
     {cardHeader}
   </div>
 )
 
 const PersonalCard = ({ cardHeader, text, imgSrc }) => (
-  <div className="bg-darkest border-width-2 text-light rounded p-5 m-3 w-1/2">
+  <div className="w-1/2 p-5 m-3 rounded bg-darkest border-width-2 text-light">
       <div className='flex'>
         <div className='p-2'>
           <PersonalCardHeader cardHeader={cardHeader} />
           <PersonalCardImage src={imgSrc}/>
         </div>
-        <div className='text-light text-center rounded p-2 pl-10'>{text}</div>
+        <div className='p-2 pl-10 text-center rounded text-light'>{text}</div>
       </div>
   </div>
 );
